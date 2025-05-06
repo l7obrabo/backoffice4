@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Plus, Filter, Import, FileUpload, FileDown } from "lucide-react";
+import { Plus, Filter, Import, FileDown } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import SearchBar from "@/components/SearchBar";
 import UsersTable, { User } from "@/components/UsersTable";
