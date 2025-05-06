@@ -1,92 +1,92 @@
 
-import { useState } from "react";
-import { Eye, EyeOff, Luggage } from "lucide-react";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você implementaria a lógica de autenticação
-    console.log("Login attempt with:", { email, password });
+    setLoading(true);
+    setError('');
+
+    try {
+      // Simulate authentication
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // For demo purposes, navigate to dashboard
+      navigate('/dashboard');
+    } catch (err) {
+      setError('Invalid credentials. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="login-card">
-      <div className="text-center mb-8">
-        <div className="flex justify-center mb-4">
-          <Luggage className="text-[hsl(var(--epic-blue))]" size={32} />
-        </div>
-        <h1 className="text-2xl font-bold epic-blue-text mb-2">EpicTrip</h1>
-        <p className="text-lg epic-blue-text">Welcome to our platform</p>
+      <div className="mb-10">
+        <h1 className="text-2xl font-bold mb-2">Login to EpicTrip</h1>
+        <p className="text-gray-500">Welcome back! Please enter your details to continue.</p>
       </div>
-
+      
+      {error && (
+        <div className="mb-4 p-3 bg-red-50 text-red-600 rounded-md text-sm">
+          {error}
+        </div>
+      )}
+      
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm mb-2">
-            E-mail
-          </label>
-          <input
+          <label htmlFor="email" className="block mb-2 text-sm font-medium">Email</label>
+          <input 
             id="email"
-            type="email"
-            className="login-input"
-            placeholder="mickele@epictrip.com"
+            type="email" 
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="login-input" 
+            placeholder="Enter your email" 
           />
         </div>
-
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-sm mb-2">
-            Password
-          </label>
-          <div className="relative">
-            <input
-              id="password"
-              type={showPassword ? "text" : "password"}
-              className="login-input pr-10"
-              placeholder="****************"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <button
-              type="button"
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? (
-                <EyeOff size={18} />
-              ) : (
-                <Eye size={18} />
-              )}
-            </button>
-          </div>
-        </div>
-
+        
         <div className="mb-6">
-          <button
-            type="button"
-            className="text-sm text-gray-500 hover:text-gray-700"
-          >
-            Forgot password
-          </button>
+          <label htmlFor="password" className="block mb-2 text-sm font-medium">Password</label>
+          <input 
+            id="password"
+            type="password" 
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="login-input" 
+            placeholder="••••••••" 
+          />
         </div>
-
-        <button type="submit" className="epic-blue-btn w-full mb-6">
-          Login
+        
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center">
+            <input id="remember" type="checkbox" className="h-4 w-4 accent-blue-600" />
+            <label htmlFor="remember" className="ml-2 text-sm text-gray-600">Remember me</label>
+          </div>
+          <a href="#" className="text-sm epic-blue-text">Forgot password?</a>
+        </div>
+        
+        <button 
+          type="submit" 
+          className="epic-blue-btn w-full mb-6"
+          disabled={loading}
+        >
+          {loading ? 'Signing in...' : 'Sign in'}
         </button>
-
+        
         <div className="text-center">
-          <button
-            type="button"
-            className="text-sm text-gray-500 hover:text-gray-700"
-          >
-            Create account
-          </button>
+          <p className="text-sm text-gray-600">
+            Don't have an account? <a href="#" className="epic-blue-text">Create account</a>
+          </p>
         </div>
       </form>
     </div>
