@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Plus, Filter, Import, Export } from "lucide-react";
+import { Plus, Filter, Import, FileUpload, FileDown } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import SearchBar from "@/components/SearchBar";
 import UsersTable, { User } from "@/components/UsersTable";
@@ -126,7 +126,7 @@ const Users = () => {
               className="flex items-center gap-2"
               onClick={handleExport}
             >
-              <Export size={16} />
+              <FileDown size={16} />
               Export
             </Button>
           </div>
