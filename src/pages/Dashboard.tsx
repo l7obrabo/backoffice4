@@ -21,7 +21,7 @@ interface ChangelogItem {
 const Dashboard = () => {
   const summaryCards = [
     {
-      title: 'Cugit ',
+      title: 'house',
       value: '2.843',
       change: 'Increase 12% in the last month',
       color: 'text-emerald-500'
