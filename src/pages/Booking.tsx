@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar';
 import { Button } from "@/components/ui/button";
 import { Filter, Calendar } from 'lucide-react';
 import TablePagination from '../components/TablePagination';
+import { toast } from "sonner";
 
 const Booking = () => {
   const [searchQuery, setSearchQuery] = useState('');
