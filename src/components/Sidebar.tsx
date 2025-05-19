@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -52,7 +53,6 @@ const Sidebar = () => {
   ];
 
   return (
-    
     <div className="w-64 bg-white border-r border-gray-200 flex flex-col h-screen">
       {/* Logo */}
       <div className="px-6 py-4 border-b">
