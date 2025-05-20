@@ -1,19 +1,27 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { toast } from "sonner";
 import GeometricBackground from "@/components/GeometricBackground";
 
-const AddOTP = () => {
+const OTPCodeEntry = () => {
+  const [otpCode, setOtpCode] = useState("");
   const navigate = useNavigate();
   
   const handleConfirm = () => {
-    // Redirect to OTP code entry page instead of dashboard
-    navigate('/otp-code-entry');
+    if (otpCode.length !== 6) {
+      toast.error("Please enter the complete OTP code");
+      return;
+    }
+    
+    toast.success("OTP confirmed successfully");
+    navigate('/dashboard');
   };
   
   const handlePreviousStep = () => {
-    navigate('/verify-code');
+    navigate('/add-otp');
   };
 
   return (
@@ -27,25 +35,29 @@ const AddOTP = () => {
             </svg>
             <span className="text-2xl font-bold">EpicTrip</span>
           </div>
-          <h1 className="text-xl font-bold text-blue-600 mt-2">Add OTP</h1>
+          <h1 className="text-xl font-bold text-blue-600 mt-2">Add OTP code generated</h1>
         </div>
 
         <div className="space-y-6">
-          <div className="border border-blue-200 rounded-md p-6">
-            <p className="text-gray-600 text-center mb-4">
-              Read this QR Code to use OTP as a<br />
-              two-factor authentication process
-            </p>
+          <div className="text-center">
+            <p className="text-gray-600 mb-4">Insert the code</p>
             
-            <div className="flex justify-center my-6">
-              {/* QR code image */}
-              <div className="w-48 h-48 bg-white">
-                <img 
-                  src="/lovable-uploads/073356b1-fdb6-4c05-bf2d-9bac5b86a200.png" 
-                  alt="QR Code for OTP setup" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
+            <div className="flex justify-center mb-4">
+              <InputOTP
+                maxLength={6}
+                value={otpCode}
+                onChange={setOtpCode}
+                className="gap-2"
+              >
+                <InputOTPGroup>
+                  <InputOTPSlot index={0} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
+                  <InputOTPSlot index={1} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
+                  <InputOTPSlot index={2} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
+                  <InputOTPSlot index={3} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
+                  <InputOTPSlot index={4} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
+                  <InputOTPSlot index={5} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
+                </InputOTPGroup>
+              </InputOTP>
             </div>
           </div>
 
@@ -70,4 +82,4 @@ const AddOTP = () => {
   );
 };
 
-export default AddOTP;
+export default OTPCodeEntry;
