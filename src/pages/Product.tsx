@@ -4,7 +4,7 @@ import Sidebar from '@/components/Sidebar';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ProductTable from '@/components/ProductTable';
-import { PlusSquare, Filter, Import, Export, Search } from "lucide-react";
+import { PlusSquare, Filter, Import, FileExport, Search } from "lucide-react";
 import { toast } from "sonner";
 
 interface Product {
@@ -126,7 +126,7 @@ const Product = () => {
                 onClick={handleExport}
                 className="text-gray-600"
               >
-                <Export size={18} className="mr-1" />
+                <FileExport size={18} className="mr-1" />
                 Export
               </Button>
             </div>
