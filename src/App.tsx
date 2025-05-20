@@ -18,6 +18,7 @@ import PhoneVerification from "./pages/PhoneVerification";
 import VerifyCode from "./pages/VerifyCode";
 import AddOTP from "./pages/AddOTP";
 import OTPCodeEntry from "./pages/OTPCodeEntry";
+import AccountCreated from "./pages/AccountCreated"; // Nova importação
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/verify-code" element={<VerifyCode />} />
           <Route path="/add-otp" element={<AddOTP />} />
           <Route path="/otp-code-entry" element={<OTPCodeEntry />} />
+          <Route path="/account-created" element={<AccountCreated />} /> {/* Nova rota */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
