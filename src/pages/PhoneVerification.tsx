@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -22,9 +21,8 @@ const PhoneVerification = () => {
     }
     
     toast.success(`Verification code sent via ${verificationMethod}`);
-    // In a real app, this would send a verification code and redirect to a code verification page
-    // For now, we'll just redirect to the dashboard
-    navigate('/dashboard');
+    // Navigate to the verification code page
+    navigate('/verify-code');
   };
 
   const handlePreviousStep = () => {

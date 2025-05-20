@@ -15,6 +15,7 @@ import PreOrders from "./pages/PreOrders";
 import Product from "./pages/Product";
 import CreatePassword from "./pages/CreatePassword";
 import PhoneVerification from "./pages/PhoneVerification";
+import VerifyCode from "./pages/VerifyCode";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/product" element={<Product />} />
           <Route path="/create-password" element={<CreatePassword />} />
           <Route path="/phone-verification" element={<PhoneVerification />} />
+          <Route path="/verify-code" element={<VerifyCode />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
