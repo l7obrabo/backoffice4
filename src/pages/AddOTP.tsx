@@ -1,15 +1,13 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import GeometricBackground from "@/components/GeometricBackground";
-import { QRCodeCanvas } from 'qrcode.react'; // Importar o componente QR Code
+import { QRCodeCanvas } from 'qrcode.react';
 
 const AddOTP = () => {
   const navigate = useNavigate();
   
   const handleConfirm = () => {
-    // Redirect to OTP code entry page instead of dashboard
     navigate('/otp-code-entry');
   };
   
@@ -17,7 +15,6 @@ const AddOTP = () => {
     navigate('/verify-code');
   };
 
-  // Dados para o QR Code (exemplo, substitua com os dados reais)
   const qrCodeValue = "otpauth://totp/EpicTrip:usuario@exemplo.com?secret=JBSWY3DPEHPK3PXP&issuer=EpicTrip";
 
   return (
@@ -50,13 +47,6 @@ const AddOTP = () => {
                   bgColor={"#ffffff"}
                   fgColor={"#000000"}
                   level={"Q"}
-                  imageSettings={{ // Para centralizar, caso a imagem de logo seja adicionada no futuro
-                    x: undefined,
-                    y: undefined,
-                    height: 0,
-                    width: 0,
-                    excavate: false,
-                  }}
                 />
               </div>
             </div>
