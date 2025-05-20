@@ -13,6 +13,7 @@ import Houses from "./pages/Houses";
 import Booking from "./pages/Booking";
 import PreOrders from "./pages/PreOrders";
 import Product from "./pages/Product";
+import CreatePassword from "./pages/CreatePassword";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/booking" element={<Booking />} />
           <Route path="/pre-orders" element={<PreOrders />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/create-password" element={<CreatePassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
