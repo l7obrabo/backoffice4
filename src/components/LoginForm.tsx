@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -25,8 +24,11 @@ const LoginForm = () => {
       return;
     }
     
-    // In a real app, this would verify credentials
-    if (email === "admin@example.com" && password === "password") {
+    // Verifica as novas credenciais
+    const isLeonardo = email === "leonardo@gmail.com" && password === "12345";
+    const isLeticia = email === "leticia@gmail.com" && password === "12345";
+
+    if (isLeonardo || isLeticia) {
       toast.success("Login successful!");
       navigate("/dashboard");
     } else {
