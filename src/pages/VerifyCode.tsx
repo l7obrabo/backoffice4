@@ -29,7 +29,7 @@ const VerifyCode = () => {
     }
     
     toast.success("Phone verified successfully");
-    navigate('/dashboard');
+    navigate('/add-otp');
   };
   
   const handleResendCode = () => {
