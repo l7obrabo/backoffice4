@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit2, Trash2 } from "lucide-react";
+import { Edit2, Trash2, FileText, Import } from "lucide-react";
 import TablePagination from '@/components/TablePagination';
 
 interface Product {
@@ -168,6 +167,7 @@ const ProductTable = ({
               size="sm"
               onClick={handleImport}
             >
+              <Import size={16} className="mr-1" />
               Import
             </Button>
             <Button 
@@ -175,6 +175,7 @@ const ProductTable = ({
               size="sm"
               onClick={handleExport}
             >
+              <FileText size={16} className="mr-1" />
               Export
             </Button>
           </div>
