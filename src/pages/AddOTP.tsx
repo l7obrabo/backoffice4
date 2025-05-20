@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import GeometricBackground from "@/components/GeometricBackground";
+import { QRCodeCanvas } from 'qrcode.react'; // Importar o componente QR Code
 
 const AddOTP = () => {
   const navigate = useNavigate();
@@ -16,6 +17,9 @@ const AddOTP = () => {
     navigate('/verify-code');
   };
 
+  // Dados para o QR Code (exemplo, substitua com os dados reais)
+  const qrCodeValue = "otpauth://totp/EpicTrip:usuario@exemplo.com?secret=JBSWY3DPEHPK3PXP&issuer=EpicTrip";
+
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <GeometricBackground />
@@ -27,23 +31,32 @@ const AddOTP = () => {
             </svg>
             <span className="text-2xl font-bold">EpicTrip</span>
           </div>
-          <h1 className="text-xl font-bold text-blue-600 mt-2">Add OTP</h1>
+          <h1 className="text-xl font-bold text-blue-600 mt-2">Adicionar OTP</h1>
         </div>
 
         <div className="space-y-6">
           <div className="border border-blue-200 rounded-md p-6">
             <p className="text-gray-600 text-center mb-4">
-              Read this QR Code to use OTP as a<br />
-              two-factor authentication process
+              Leia este QR Code para usar o OTP como<br />
+              um processo de autenticação de dois fatores.
             </p>
             
             <div className="flex justify-center my-6">
-              {/* QR code image */}
-              <div className="w-48 h-48 bg-white">
-                <img 
-                  src="/lovable-uploads/073356b1-fdb6-4c05-bf2d-9bac5b86a200.png" 
-                  alt="QR Code for OTP setup" 
-                  className="w-full h-full object-contain"
+              {/* QR code component */}
+              <div className="w-48 h-48 bg-white flex items-center justify-center">
+                <QRCodeCanvas 
+                  value={qrCodeValue} 
+                  size={192} // w-48 é 192px
+                  bgColor={"#ffffff"}
+                  fgColor={"#000000"}
+                  level={"Q"}
+                  imageSettings={{ // Para centralizar, caso a imagem de logo seja adicionada no futuro
+                    x: undefined,
+                    y: undefined,
+                    height: 0,
+                    width: 0,
+                    excavate: false,
+                  }}
                 />
               </div>
             </div>
@@ -53,7 +66,7 @@ const AddOTP = () => {
             onClick={handleConfirm}
             className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md"
           >
-            Confirm
+            Confirmar
           </Button>
           
           <div className="text-center">
@@ -61,7 +74,7 @@ const AddOTP = () => {
               onClick={handlePreviousStep}
               className="text-blue-600 hover:text-blue-800 font-medium"
             >
-              Back to previous step
+              Voltar para etapa anterior
             </button>
           </div>
         </div>

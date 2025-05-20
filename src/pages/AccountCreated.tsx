@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import GeometricBackground from "@/components/GeometricBackground";
-import { CheckCircle } from 'lucide-react'; // Importando um ícone de check
+import { CheckCircle } from 'lucide-react';
 
 const AccountCreated = () => {
   const navigate = useNavigate();
@@ -20,13 +20,13 @@ const AccountCreated = () => {
           <CheckCircle className="h-20 w-20 text-blue-600" strokeWidth={1.5} />
         </div>
         <h1 className="text-2xl font-semibold text-gray-800 mb-4">
-          Your account has been created successfully!
+          Sua conta foi criada com sucesso!
         </h1>
         <Button
           onClick={handleBackToLogin}
           className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md mt-6"
         >
-          Back to login
+          Voltar para o login
         </Button>
       </div>
     </div>

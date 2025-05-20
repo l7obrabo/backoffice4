@@ -12,12 +12,14 @@ const OTPCodeEntry = () => {
   
   const handleConfirm = () => {
     if (otpCode.length !== 6) {
-      toast.error("Please enter the complete OTP code");
+      toast.error("Por favor, insira o código OTP completo");
       return;
     }
     
-    toast.success("OTP confirmed successfully");
-    navigate('/dashboard');
+    // Simulação de validação de OTP. Substitua pela lógica real.
+    console.log("Código OTP inserido:", otpCode);
+    toast.success("OTP confirmado com sucesso");
+    navigate('/account-created'); // Redirecionar para a página de conta criada
   };
   
   const handlePreviousStep = () => {
@@ -35,19 +37,19 @@ const OTPCodeEntry = () => {
             </svg>
             <span className="text-2xl font-bold">EpicTrip</span>
           </div>
-          <h1 className="text-xl font-bold text-blue-600 mt-2">Add OTP code generated</h1>
+          <h1 className="text-xl font-bold text-blue-600 mt-2">Adicionar código OTP gerado</h1>
         </div>
 
         <div className="space-y-6">
           <div className="text-center">
-            <p className="text-gray-600 mb-4">Insert the code</p>
+            <p className="text-gray-600 mb-4">Insira o código</p>
             
             <div className="flex justify-center mb-4">
               <InputOTP
                 maxLength={6}
                 value={otpCode}
                 onChange={setOtpCode}
-                className="gap-2"
+                className="gap-2" // Mantido como estava
               >
                 <InputOTPGroup>
                   <InputOTPSlot index={0} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
@@ -65,7 +67,7 @@ const OTPCodeEntry = () => {
             onClick={handleConfirm}
             className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md"
           >
-            Confirm
+            Confirmar
           </Button>
           
           <div className="text-center">
@@ -73,7 +75,7 @@ const OTPCodeEntry = () => {
               onClick={handlePreviousStep}
               className="text-blue-600 hover:text-blue-800 font-medium"
             >
-              Back to previous step
+              Voltar para etapa anterior
             </button>
           </div>
         </div>
