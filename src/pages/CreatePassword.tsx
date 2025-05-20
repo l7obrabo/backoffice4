@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -44,9 +43,8 @@ const CreatePassword = () => {
       return;
     }
 
-    // In a real app, this would call an API to create the account
-    toast.success("Password created successfully");
-    navigate('/dashboard');
+    // Instead of redirecting to dashboard, we now redirect to phone verification
+    navigate('/phone-verification');
   };
 
   const togglePasswordVisibility = () => {
