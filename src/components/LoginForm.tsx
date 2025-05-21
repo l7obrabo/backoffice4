@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -24,7 +25,7 @@ const LoginForm = () => {
       return;
     }
     
-    // Verifica as novas credenciais
+    // Verifica as credenciais
     const isLeonardo = email === "leonardo@gmail.com" && password === "12345";
     const isLeticia = email === "leticia@gmail.com" && password === "12345";
 
@@ -38,6 +39,10 @@ const LoginForm = () => {
 
   const handleCreateAccount = () => {
     navigate("/create-password");
+  };
+  
+  const handleForgotPassword = () => {
+    navigate("/reset-password");
   };
 
   return (
@@ -69,7 +74,13 @@ const LoginForm = () => {
         <div>
           <div className="flex items-center justify-between mb-1">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-            <a href="#" className="text-sm font-medium epic-blue-text">Forgot password?</a>
+            <button 
+              type="button"
+              onClick={handleForgotPassword}
+              className="text-sm font-medium epic-blue-text"
+            >
+              Forgot password?
+            </button>
           </div>
           <div className="relative">
             <Input
