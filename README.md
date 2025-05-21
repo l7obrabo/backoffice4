@@ -10,7 +10,7 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/09b6c943-50a8-4f57-a626-8ef1aaf70c81) and start prompting.
+Simply visit the [Lovable Project](https://backoffice-compass-control-14.lovable.app/) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
