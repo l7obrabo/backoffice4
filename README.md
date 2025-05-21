@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/09b6c943-50a8-4f57-a626-8ef1aaf70c81
+**URL**: https://backoffice-compass-control-14.lovable.app/
 
 ## How can I edit this code?
 
