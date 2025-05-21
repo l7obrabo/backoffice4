@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -35,9 +34,8 @@ const VerifyCode = () => {
     toast.success("Code verified successfully");
     
     if (isResetFlow) {
-      // In a real app, this would take the user to a page to set a new password
-      toast.success("Password reset completed successfully");
-      navigate('/');
+      // Navigate to OTP code entry page in reset flow
+      navigate('/otp-code-entry', { state: { fromReset: true } });
     } else {
       navigate('/add-otp');
     }
@@ -53,7 +51,7 @@ const VerifyCode = () => {
   };
 
   // Format the timer as MM:SS
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
@@ -70,7 +68,8 @@ const VerifyCode = () => {
             </svg>
             <span className="text-2xl font-bold">EpicTrip</span>
           </div>
-          <h2 className="text-xl font-medium text-blue-600 mb-6">Reset password</h2>
+          {/* Title changes based on context, but let's keep "Reset password" if isResetFlow for consistency with PhoneVerification */}
+          <h2 className="text-xl font-medium text-blue-600 mb-6">{isResetFlow ? "Reset password" : "Verify Phone Number"}</h2>
         </div>
 
         <div className="space-y-6">
@@ -82,9 +81,9 @@ const VerifyCode = () => {
                 maxLength={6}
                 value={verificationCode}
                 onChange={setVerificationCode}
-                className="gap-2"
+                // className="gap-2" // The input-otp component itself adds gap-2 via containerClassName
               >
-                <InputOTPGroup>
+                <InputOTPGroup className="gap-2"> {/* Apply gap directly to group if needed, or rely on InputOTP's default */}
                   <InputOTPSlot index={0} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
                   <InputOTPSlot index={1} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
                   <InputOTPSlot index={2} className="rounded-md h-12 w-12 border-gray-300 text-lg" />
@@ -98,9 +97,9 @@ const VerifyCode = () => {
             <button 
               onClick={handleResendCode}
               disabled={timeLeft > 0}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              className="text-blue-600 hover:text-blue-800 font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Resend code {timeLeft > 0 ? formatTime(timeLeft) : ''}
+              Resend code {timeLeft > 0 ? `(${formatTime(timeLeft)})` : ''}
             </button>
           </div>
 
