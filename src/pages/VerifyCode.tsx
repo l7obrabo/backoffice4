@@ -32,7 +32,7 @@ const VerifyCode = () => {
       return;
     }
     
-    toast.success("Phone verified successfully");
+    toast.success("Code verified successfully");
     
     if (isResetFlow) {
       // In a real app, this would take the user to a page to set a new password
@@ -53,7 +53,7 @@ const VerifyCode = () => {
   };
 
   // Format the timer as MM:SS
-  const formatTime = (seconds: number) => {
+  const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
@@ -63,16 +63,14 @@ const VerifyCode = () => {
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <GeometricBackground />
       <div className="login-card w-full max-w-md p-8 bg-white rounded-xl shadow-md z-10">
-        <div className="flex flex-col items-center mb-6">
-          <div className="text-blue-600 mb-2 flex items-center">
+        <div className="flex flex-col items-center mb-8">
+          <div className="text-blue-600 mb-4 flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
             </svg>
             <span className="text-2xl font-bold">EpicTrip</span>
           </div>
-          <h1 className="text-xl font-bold text-blue-600 mt-2">
-            {isResetFlow ? "Reset password" : "Verify phone number"}
-          </h1>
+          <h2 className="text-xl font-medium text-blue-600 mb-6">Reset password</h2>
         </div>
 
         <div className="space-y-6">
@@ -113,7 +111,7 @@ const VerifyCode = () => {
             Confirm
           </Button>
           
-          <div className="text-center">
+          <div className="text-center mt-4">
             <button 
               onClick={handlePreviousStep}
               className="text-blue-600 hover:text-blue-800 font-medium"
