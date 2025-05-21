@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import GeometricBackground from "@/components/GeometricBackground";
@@ -10,6 +10,10 @@ const VerifyCode = () => {
   const [verificationCode, setVerificationCode] = useState("");
   const [timeLeft, setTimeLeft] = useState(54);
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Check if coming from reset password flow
+  const isResetFlow = location.state?.fromReset === true;
   
   // Timer for the resend code countdown
   useEffect(() => {
@@ -29,7 +33,14 @@ const VerifyCode = () => {
     }
     
     toast.success("Phone verified successfully");
-    navigate('/add-otp');
+    
+    if (isResetFlow) {
+      // In a real app, this would take the user to a page to set a new password
+      toast.success("Password reset completed successfully");
+      navigate('/');
+    } else {
+      navigate('/add-otp');
+    }
   };
   
   const handleResendCode = () => {
@@ -38,7 +49,7 @@ const VerifyCode = () => {
   };
   
   const handlePreviousStep = () => {
-    navigate('/phone-verification');
+    navigate('/phone-verification', { state: { fromReset: isResetFlow } });
   };
 
   // Format the timer as MM:SS
@@ -59,7 +70,9 @@ const VerifyCode = () => {
             </svg>
             <span className="text-2xl font-bold">EpicTrip</span>
           </div>
-          <h1 className="text-xl font-bold text-blue-600 mt-2">Verify phone number</h1>
+          <h1 className="text-xl font-bold text-blue-600 mt-2">
+            {isResetFlow ? "Reset password" : "Verify phone number"}
+          </h1>
         </div>
 
         <div className="space-y-6">

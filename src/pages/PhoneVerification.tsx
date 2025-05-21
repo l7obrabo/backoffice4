@@ -1,32 +1,39 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { Phone } from "lucide-react";
 import GeometricBackground from "@/components/GeometricBackground";
 
 const PhoneVerification = () => {
   const [phoneNumber, setPhoneNumber] = useState('+1 (431) ****-2314');
   const [verificationMethod, setVerificationMethod] = useState('whatsapp');
   const navigate = useNavigate();
-
+  const location = useLocation();
+  
+  // Check if coming from reset password flow
+  const isResetFlow = location.state?.fromReset === true;
+  
   const handleSendCode = () => {
     if (!phoneNumber.trim()) {
       toast.error("Please enter your phone number");
       return;
     }
     
-    toast.success(`Verification code sent via ${verificationMethod}`);
+    toast.success(`Verification code sent via ${verificationMethod === 'whatsapp' ? 'WhatsApp' : 'Email'}`);
     // Navigate to the verification code page
-    navigate('/verify-code');
+    navigate('/verify-code', { state: { fromReset: isResetFlow } });
   };
 
   const handlePreviousStep = () => {
-    navigate('/create-password');
+    if (isResetFlow) {
+      navigate('/reset-password');
+    } else {
+      navigate('/create-password');
+    }
   };
 
   return (
@@ -40,7 +47,7 @@ const PhoneVerification = () => {
             </svg>
             <span className="text-2xl font-bold">EpicTrip</span>
           </div>
-          <h1 className="text-xl font-bold text-blue-600 mt-2">Add phone number</h1>
+          <h1 className="text-xl font-bold text-blue-600 mt-2">Reset password</h1>
         </div>
 
         <div className="space-y-6">

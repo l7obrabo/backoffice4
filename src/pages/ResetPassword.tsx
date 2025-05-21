@@ -21,8 +21,8 @@ const ResetPassword = () => {
     // In a real application, this would call an API to send a password reset email
     toast.success("Email de recuperação enviado com sucesso!");
     
-    // For demo purposes, redirect to verify-code page as if user received the code
-    navigate('/verify-code');
+    // Redirect to the phone verification page instead of verify-code
+    navigate('/phone-verification', { state: { fromReset: true } });
   };
 
   const handleBackToLogin = () => {
