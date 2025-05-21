@@ -2,16 +2,18 @@
 
 ## Project info
 
-**URL**: (backoffice-compass-control-83.lovable.app)
+**URL**: backoffice-compass-control-75.lovable.app
+
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
-backoffice-compass-control-83.lovable.app
+backoffice-compass-control-75.lovable.app
+
 
 **Use Lovable**
 
-Simply visit the [Lovable Project] (backoffice-compass-control-83.lovable.app) and start prompting.
+Simply visit the [Lovable Project] backoffice-compass-control-75.lovable.app and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
