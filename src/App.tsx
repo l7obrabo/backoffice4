@@ -19,7 +19,8 @@ import VerifyCode from "./pages/VerifyCode";
 import AddOTP from "./pages/AddOTP";
 import OTPCodeEntry from "./pages/OTPCodeEntry";
 import AccountCreated from "./pages/AccountCreated";
-import ResetPassword from "./pages/ResetPassword"; // Nova importação
+import ResetPassword from "./pages/ResetPassword";
+import CreateNewPassword from "./pages/CreateNewPassword"; // Nova importação
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,7 +47,8 @@ const App = () => (
           <Route path="/add-otp" element={<AddOTP />} />
           <Route path="/otp-code-entry" element={<OTPCodeEntry />} />
           <Route path="/account-created" element={<AccountCreated />} />
-          <Route path="/reset-password" element={<ResetPassword />} /> {/* Nova rota */}
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/create-new-password" element={<CreateNewPassword />} /> {/* Nova rota */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

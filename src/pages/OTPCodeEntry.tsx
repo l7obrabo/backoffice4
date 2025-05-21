@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -19,15 +18,14 @@ const OTPCodeEntry = () => {
       return;
     }
     
-    // Simulação de validação de OTP. Substitua pela lógica real.
     console.log("OTP Code entered:", otpCode);
 
     if (isResetFlow) {
-      toast.success("Password reset completed successfully");
-      navigate('/'); // Redirect to login page after successful password reset
+      toast.success("OTP confirmed, proceed to create new password");
+      navigate('/create-new-password'); // Navigate to create new password page
     } else {
       toast.success("OTP confirmed successfully");
-      navigate('/account-created'); // Redirect to account created page for normal flow
+      navigate('/account-created'); 
     }
   };
   
